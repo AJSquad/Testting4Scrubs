@@ -8,10 +8,10 @@ public interface MemberDao {
 	/**
 	 * Abstract methods to be used in "PostgresMemberDaoImpl.java" class
 	 * @return respective methods that are used in above stated class.
-	 */
-            
-	Collection<Member> getAllMembers();// Git merge    
+	 */  
  
+	Collection<Member> getAllMembers();// Git merge lots of d's
+
     Member getMemberById(int id);
  
     void removesMemberById(int id);
