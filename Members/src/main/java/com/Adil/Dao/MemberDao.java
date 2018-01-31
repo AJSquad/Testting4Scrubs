@@ -9,7 +9,7 @@ public interface MemberDao {
 	 * Abstract methods to be used in "PostgresMemberDaoImpl.java" class
 	 * @return respective methods that are used in above stated class.
 	 */
-	Collection<Member> getAllMembers();                
+	Collection<Member> getAllMembers(); //break the code wwwwwwwwwwwwwww               
  
     Member getMemberById(int id);
  
