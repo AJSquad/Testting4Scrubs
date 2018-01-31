@@ -14,7 +14,7 @@ public class MemberService {
 @Qualifier("postgres")
     private MemberDao memberDao;
     
-    public Collection<Member> getAllMembers() {
+    public Collection<Member> getAllMembers() { //Service layer for business logic
         return this.memberDao.getAllMembers();
     }    
 
