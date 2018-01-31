@@ -10,7 +10,8 @@ public interface MemberDao {
 	 * @return respective methods that are used in above stated class.
 	 */
             
-	Collection<Member> getAllMembers();// Git merge Josh              
+	Collection<Member> getAllMembers();// Git merge adil and josh       
+
  
     Member getMemberById(int id);
  
