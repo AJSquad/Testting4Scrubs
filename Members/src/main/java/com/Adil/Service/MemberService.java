@@ -14,7 +14,7 @@ public class MemberService {
 @Qualifier("postgres")
     private MemberDao memberDao;
     
-    public Collection<Member> getAllMembers() {
+    public Collection<Member> getAllMembers() { //Merging 2 different classes wtf
         return this.memberDao.getAllMembers();
     }    
 
