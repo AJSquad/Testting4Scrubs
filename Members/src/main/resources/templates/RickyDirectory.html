@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Audatex Office Profiles </title>
+  <link rel="stylesheet" th:href="@{/styles.css}"> </link>
+</head>
+
+<body>
+  	<a href="Theale Directory.html">
+    <img th:src="@{/Audatex.jpg}" alt="Audatex" width="241" height="150"> </img>
+  	</a>
+<h1 class ="Ricky">Rickmansworth Staff Directory</h1>
+  
+    <ul class = "RickyNav"> 
+     	 <li class="SelRicky"><a href="RickyDirectory.html">Home</a></li>
+     	 <li><a href="AddProfilePageRicky.html">Add Profile</a></li>
+     	 <li><a href="ViewAllRicky.html">View All Profiles</a></li>
+  	</ul>
+  
+    <label class="switch">
+  		<input type="checkbox" id="myCheck" onclick="myFunction()" checked>
+  		<span class="slider round"></span> 
+  		<span class="on">Ricky</span>
+ 	</label>
+ 	
+  	<script>
+  
+  	function myFunction() {
+  			var checkBox = document.getElementById("myCheck");
+  
+  		if (checkBox.checked == true){
+ 
+ 		} else {
+	   	document.location.href = 'http://localhost:8080/ThealeDirectory.html'
+  		}
+	} 
+  	</script>
+ 
+<h2> Home Page </h2>
+<h3>What is it?</h3>
+
+	<p>Directory of profiles for members of the Rickmansworth and Theale Audatex offices. </p>
+<br></br>
+
+<h3>Who made it?</h3>
+	<p>Josh and Adil made this </p>
+	
+</body>
+</html>

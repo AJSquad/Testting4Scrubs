@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Theale Office Profiles </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="Stylesheet" th:href="@{/styles.css}"/>
+ 
+        <script>
+        function validateFirstName() {
+            var first = document.forms["AddProfileForm"]["firstname"].value;
+            if (first == "") {
+                alert("First Name Required");
+                return false;
+            }
+        }
+
+        function validateSurname() {
+            var last = document.forms["AddProfileForm"]["surname"].value;
+            if (last == "") {
+                alert("Last Name Required");
+                return false;
+            }
+        }
+
+        function validateAge() {
+            var age = document.forms["AddProfileForm"]["myAge"].value;
+            if (age == "") {
+                alert("Age Required");
+                return false;
+            }
+        }
+
+        function validateJob() {
+            var job = document.forms["AddProfileForm"]["myJobDesc"].value;
+            if (job == "") {
+                alert("Job Title Required");
+                return false;
+            }
+        }
+
+        function onlyNumb(e, t) {
+            try {
+                if (window.event) {
+                    var charCode = window.event.keyCode;
+                }
+                else if (e) {
+                    var charCode = e.which;
+                }
+                else { return true; }
+                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                }
+                return true;
+                }
+                catch (err) {
+                alert(err.Description);
+            }
+        }
+
+
+        function onlyStr(e, t) {
+             try {
+                 if (window.event) {
+                     var charCode = window.event.keyCode;
+                 }
+                 else if (e) {
+                     var charCode = e.which;
+                 }
+                 else { return true; }
+                 if (charCode > 31 && (charCode < 65)) {
+                     return false;
+                 }
+                 return true;
+                 }
+                 catch (err) {
+                 alert(err.Description);
+             }
+         }
+        
+        
+        function inputFocus(i){
+            if(i.value==i.defaultValue){ i.value=""; i.style.color="#000"; }
+         }
+        function inputBlur(i){
+            if(i.value==""){ i.value=i.defaultValue; i.style.color="#888"; }
+         }
+        </script>
+</head>
+
+<body>
+    
+	<a href="ThealeDirectory.html">
+	<img th:src="@{/Audatex.jpg}" alt="Audatex"  width="241" height="150"/>
+	</a>
+	    
+    <h1>Theale Staff Directory</h1>
+  
+    <ul> 
+      	<li><a href="ThealeDirectory.html">Home</a></li>
+      	<li class="Sel"><a href="AddProfilePage.html">Add Profile</a></li>
+      	<li><a href="ViewAll.html">View All Profiles</a></li>
+    </ul>
+  
+  	<label class="switch">
+  		<input type="checkbox" id="myCheck" onclick="myFunction()">
+  		<span class="slider round"></span> 
+  		<span class="off">Theale</span>
+  	</label>
+ 
+ 
+ 		<script>
+  		function myFunction() {
+  					var checkBox = document.getElementById("myCheck");
+
+  				if (checkBox.checked == true){
+	  				document.location.href = 'http://localhost:8080/RickyDirectory.html'
+  				} else {
+  		}
+	} 		
+  		</script>
+
+    <h2>Personal Information</h2>
+    <form name = "AddProfileForm" method="post"  onsubmit=" return validateFirstName() &amp; validateSurname() &amp; validateAge() &amp; validateJob()" action="#" th:action="@{/AddProfilePage}" th:object="${InfoToSubmit}" method="post" >
+
+        
+            <p> Name: <input  type = "text" placeholder="First" id = "firstname"  style = "width:200px;height:20px;"  onkeypress="return onlyStr(event,this);" onfocus="inputFocus(this)" onblur="inputBlur(this)" th:field="*{name}" name="name"/></p>
+<br></br>        
+            <p> Surname: <input  type = "text" placeholder="Surname" id = "surname"  style = "width:200px;height:20px;" onkeypress="return onlyStr(event,this);" onfocus="inputFocus(this)"   onblur="inputBlur(this)" th:field="*{surname}" name="surname"/></p>
+<br></br>
+            <p> Age: <input  type = "text" placeholder="e.g. 23" id = "myAge" style = "width:200px;height:20px;" onkeypress="return onlyNumb(event,this);" onfocus="inputFocus(this)" onblur="inputBlur(this)" th:field="*{age}" name ="age"/></p>
+<br></br>
+            <p> Job Role: <input  placeholder="e.g. Manager" type = "text" id = "myJobDesc"  style = "width:200px;height:20px;" onkeypress="return onlyStr(event,this);" onfocus="inputFocus(this)" onblur="inputBlur(this)" th:field="*{jobrole}" name="jobrole"/> </p>
+<br></br>
+
+        		<input type = "submit" id = "Submit form"  value = "Submit"/>
+
+    </form>
+    
+</body>
+</html>

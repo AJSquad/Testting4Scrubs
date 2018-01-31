@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title> Audatex Office Profiles | Edit Profile</title>
+  <link rel="stylesheet" th:href="@{/styles.css}"></link>
+</head>
+
+<body>
+  <a href="RickyDirectory.html">
+  <img th:src="@{/Audatex.jpg}" alt="Audatex" width="241" height="150"> </img>
+  </a>
+  <h1 class ="Ricky">Rickmansworth Staff Directory</h1>
+      
+      	<label class="switch">
+  			<input type="checkbox" id="myCheck" onclick="myFunction()" checked>
+  			<span class="slider round"></span> 
+  			<span class="on">Ricky</span>
+  		</label>
+  
+  	<script>
+  	
+  	function myFunction() {
+  			var checkBox = document.getElementById("myCheck");
+  
+  		if (checkBox.checked == true){
+ 
+  	  	} else {
+	   	document.location.href = 'http://localhost:8080/ThealeDirectory.html'
+  		}
+	} 
+  
+  	function validateInput(){
+ 			var first = document.forms["AddProfileForm"]["firstname"].value;
+ 			var last = document.forms["AddProfileForm"]["surname"].value;
+ 			var age = document.forms["AddProfileForm"]["myAge"].value;
+ 			var job = document.forms["AddProfileForm"]["myJobDesc"].value;
+ 		
+ 		if (first == "") {
+ 			alert("First Name Required");
+ 			return false;
+ 		}
+ 		else if (last == "") {
+ 			alert("Last Name Required");
+ 			return false;
+ 		}
+ 		else if (age == "") {
+ 			alert("Age Required");
+ 			return false;
+ 		}
+ 		else if (job == "") {
+ 			alert("Job Role Required");
+ 			return false;
+ 		}
+ 			return true;
+}
+
+  	function onlyNumb(e, t) {
+    try {
+        if (window.event) {
+              var charCode = window.event.keyCode;
+        }
+        else if (e) {
+              var charCode = e.which;
+        }
+        else { return true; }
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+              return false;
+        }
+        return true;
+        }
+        catch (err) {
+        alert(err.Description);
+      }
+  }
+
+
+  	function onlyStr(e, t) {
+    try {
+        if (window.event) {
+               var charCode = window.event.keyCode;
+        }
+        else if (e) {
+               var charCode = e.which;
+        }
+        else { return true; }
+        if (charCode > 31 && (charCode < 65)) {
+        return false;
+        }
+        return true;
+        }
+        catch (err) {
+        alert(err.Description);
+       }
+   }
+  	function inputFocus(i){
+      	if(i.value==i.defaultValue){ i.value=""; i.style.color="#000"; }
+  }
+  	function inputBlur(i){
+      	if(i.value==""){ i.value=i.defaultValue; i.style.color="#888"; }
+  }
+  	
+  	</script>
+
+
+<h2> Edit Profile </h2>
+  <form action="#"  th:action="@{/ViewAllRicky}" id="form2">
+  </form> 
+  
+      <form name = "EditProfileFormRicky" method = "post" onsubmit=" return validateInput()" th:action="@{/EditProfileRicky}" th:object="${EditInfo}">
+
+            <p> <input  type = "hidden"  id = "id"  style = "width:200px;height:20px;" th:field="*{id}"/></p>
+<br></br>        
+            <p> Name: <input  type = "text"  id = "firstname"  style = "width:200px;height:20px;" onkeypress="return onlyStr(event,this);" onfocus="inputFocus(this)" onblur="inputBlur(this)" th:field="*{name}"/></p>
+<br></br>       
+            <p> Surname: <input  type = "text"  id = "surname"  style = "width:200px;height:20px;" onkeypress="return onlyStr(event,this);" onfocus="inputFocus(this)" onblur="inputBlur(this)" th:field="*{surname}"/></p>
+<br></br>
+            <p> Age: <input  type = "text"  id = "myAge" style = "width:200px;height:20px;" onkeypress="return onlyNumb(event,this);" onfocus="inputFocus(this)" onblur="inputBlur(this)" th:field="*{age}"/></p>
+<br></br>
+            <p> Job Role: <input   type = "text" id = "myJobDesc"  style = "width:200px;height:20px;" onkeypress="return onlyStr(event,this);" onfocus="inputFocus(this)" onblur="inputBlur(this)" th:field="*{jobrole}"/> </p>
+<br></br>
+        <input type = "submit" class="regButton" id = "Submit form"  value = "Submit"/>
+        <input form ="form2" class="regButton" type = "submit" id = "Submit form"  value = "Go Back" />
+
+	</form>
+	
+</body>
+</html>

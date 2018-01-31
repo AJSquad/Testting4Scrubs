@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  	<title> Audatex Office Profiles | View Profile</title>
+ 	 <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+
+<body>
+ 	 <a href="Theale Directory.html">
+    <img th:src="@{/Audatex.jpg}" alt="Audatex" width="241" height="150"/>
+  	</a>
+
+  <h1>Audatex Staff Directory</h1>
+
+  	<form id="form1" action="#" th:each="member : ${DelUserInfoRicky}" th:action="@{/DeleteConfirmRicky/{path}(path=${member.id})}" id="form1" th:method="delete">
+  	<input type="hidden" name="_method" value="delete" />
+  	</form> 
+  	<form id="form2" action="#"  th:action="@{/ViewAllRicky}" id="form2" >
+  	</form> 
+ 	 <form>
+		<p>Are you sure you want to delete?</p>
+ 	 <ul th:each="member : ${DelUserInfoRicky}">
+  	 	 <li><b th:text="${member.id}"th:field="*{id}"></b></li>
+     	 <li><b th:text="${member.name}"th:field="*{name}"></b></li>
+    	 	 <li><b th:text="${member.surname}"th:field="*{surname}"></b></li>
+     	 <li><b th:text="${member.age}"th:field="*{age}"></b></li>
+     	 <li><b th:text="${member.jobrole}"th:field="*{jobrole}"></b></li>
+  	 </ul>
+    <input form ="form1" class="regButton" type = "submit" id = "Submit form"  value = "Confirm" /><input form ="form2" class="regButton" type = "submit" id = "Submit form"  value = "Go Back" />
+ 	</form> 
+ 	
+</body>
+</html>

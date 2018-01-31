@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title> Audatex Office Profiles | View Profile</title>
+  <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+
+<body>
+ 	<a href="ThealeDirectory.html">
+    <img th:src="@{/Audatex.jpg}" alt="Audatex" width="241" height="150"/>
+  	</a>
+
+  <h1>Theale Staff Directory</h1>
+  
+    <ul> 
+      <li><a href="ThealeDirectory.html">Home</a></li>
+      <li><a href="AddProfilePage.html">Add Profile</a></li>
+      <li class="Sel"><a href="ViewAll.html">View All Profiles</a></li>
+    </ul>
+  
+  <label class="switch">
+  	<input type="checkbox" id="myCheck" onclick="myFunction()">
+  	<span class="slider round"></span> 
+  	<span class="off">Theale</span>
+  </label>
+ 
+ 	<script>
+  
+  	function myFunction() {
+  			var checkBox = document.getElementById("myCheck");
+
+  		if (checkBox.checked == true){
+	  	document.location.href = 'http://localhost:8080/RickyDirectory.html'
+  		} else {
+	   
+  	}
+} 
+  	</script>
+   
+<h2> View All Profiles </h2>
+<div th:if="${not #lists.isEmpty(UserInfo)}">     
+  <table class="ProfilesTable">
+    <tr>
+      <th class="TableHeader">ID</th>
+      <th class="TableHeader">First Name</th>
+      <th class="TableHeader">Last Name</th>
+      <th class="TableHeader">Age</th>
+      <th class="TableHeader">Job Role</th>
+    </tr> 
+    
+    <tr th:each="member : ${UserInfo}">
+      <td th:text="${member.id}" th:field="*{id}" ></td>
+      <td th:text="${member.name}" th:field="*{name}" ></td>
+      <td th:text="${member.surname}" th:field="*{surname}" ></td>
+      <td th:text="${member.age}" th:field="*{age}" ></td>
+      <td th:text="${member.job_role}" th:field="*{jobrole}" ></td>
+   	  <td><a class="updateButton" th:href="@{/EditProfile/{name}(name=${member.name})}"><span>Update</span></a></td>
+   	  <td><a class="deleteButton" th:href="@{/DeleteConfirm/{path}(path=${member.name})}"><span>Delete</span></a> </td>  
+    </tr>
+    
+  </table>  
+ </div>
+ 
+</body>
+</html>
